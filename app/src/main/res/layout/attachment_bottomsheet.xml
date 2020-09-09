@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="8dp"
+    >
+    <TextView
+        android:layout_width="match_parent"
+        android:id="@+id/draw"
+        android:layout_marginTop="8dp"
+        android:drawableLeft="@drawable/ic_baseline_edit_24"
+        android:drawableStart="@drawable/ic_baseline_edit_24"
+        android:text="Zeichnen"
+        style="@style/ActionItem"/>
+    <TextView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_marginTop="8dp"
+        android:drawableLeft="@drawable/ic_baseline_image_24"
+        android:drawableStart="@drawable/ic_baseline_image_24"
+        android:text="Bild"
+        style="@style/ActionItem"/>
+
+</LinearLayout>

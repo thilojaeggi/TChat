@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "866803272693",
+    "firebase_url": "https://tchat-62f6f.firebaseio.com",
+    "project_id": "tchat-62f6f",
+    "storage_bucket": "tchat-62f6f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:866803272693:android:3fc610f15ef7d96b442ebc",
+        "android_client_info": {
+          "package_name": "com.thilojaeggi.tchat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "866803272693-jq2ao57drd7cv40nh1jot5dhmcnrrc7k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwoWTzaNLIdpuOZesvPGkA_60cbNs-7fs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "866803272693-jq2ao57drd7cv40nh1jot5dhmcnrrc7k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
