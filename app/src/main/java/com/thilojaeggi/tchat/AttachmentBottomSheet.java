@@ -38,6 +38,7 @@ import com.google.firebase.storage.UploadTask;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Objects;
 import java.util.UUID;
 
 import static android.app.Activity.RESULT_OK;
@@ -113,13 +114,6 @@ public class AttachmentBottomSheet extends BottomSheetDialogFragment {
         {
             filePath = data.getData();
             uploadImage();
-            try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContext().getContentResolver(), filePath);
-            }
-            catch (IOException e)
-            {
-                e.printStackTrace();
-            }
         }
         if(requestCode == DRAW_IMAGE_REQUEST){
             byte[] result = data.getByteArrayExtra("bitmap");
@@ -141,7 +135,6 @@ public class AttachmentBottomSheet extends BottomSheetDialogFragment {
         final ProgressDialog progressDialog = new ProgressDialog(getContext());
         progressDialog.setTitle("Hochladen...");
         progressDialog.show();
-
         final StorageReference ref = storageReference.child("images/" + System.currentTimeMillis());
         ref.putFile(filePath).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
@@ -153,24 +146,22 @@ public class AttachmentBottomSheet extends BottomSheetDialogFragment {
                         progressDialog.dismiss();
                         Toast.makeText(getContext(), "Hochgeladen", Toast.LENGTH_SHORT).show();
                         MessageModel meMod = new MessageModel();
-                        String deviceId = Settings.Secure.getString(getActivity().getContentResolver(),
-                                Settings.Secure.ANDROID_ID);
+                        String deviceId = Settings.Secure.getString(requireActivity().getContentResolver(), Settings.Secure.ANDROID_ID);
                         meMod.setName(sharedPreferences.getString("name", null));
                         meMod.setMessage("");
                         meMod.setDeviceId(deviceId);
-                        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+                        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Chats");
                         HashMap<String, Object> hashMap = new HashMap<>();
                         hashMap.put("name", sharedPreferences.getString("name", null));
                         hashMap.put("message", "");
                         hashMap.put("deviceId", deviceId);
                         hashMap.put("imageurl", downloadUrl.toString());
-                        reference.child("" + System.currentTimeMillis()).setValue(hashMap);
+                        reference.child(sharedPreferences.getString("chatname", "null")).child("messages").child(""+System.currentTimeMillis()).setValue(hashMap);
                         dismiss();
-
                     }
                 });
             }
         });
+        }
     }
-}
 }

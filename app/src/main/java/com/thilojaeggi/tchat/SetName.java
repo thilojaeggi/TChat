@@ -28,7 +28,6 @@ public class SetName extends AppCompatActivity {
                     editor.putString("name", name.getText().toString());
                     editor.apply();
                     finish();
-
                 }
             }
         });
